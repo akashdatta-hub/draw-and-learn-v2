@@ -4,6 +4,7 @@ import { DrawCanvas } from './DrawCanvas';
 import { AIHelper } from './AIHelper';
 import { motion } from 'framer-motion';
 import { useApp } from '../lib/context';
+import { getTraceTemplate } from '../lib/traceTemplates';
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -79,6 +80,11 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
   };
 
   const renderDrawing = () => {
+    // Generate trace template for draw_trace challenges
+    const traceTemplate = challenge.mechanic === 'draw_trace'
+      ? getTraceTemplate(word.english)
+      : undefined;
+
     return (
       <div className="space-y-4">
         <div className="text-center mb-4">
@@ -87,14 +93,21 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
           <p className="text-sm text-gray-500 mt-2">
             {language === 'en' ? challenge.prompt : 'ఈ పదాన్ని గీయండి'}
           </p>
+          {challenge.mechanic === 'draw_trace' && (
+            <p className="text-xs text-primary-600 mt-1 font-medium">
+              {language === 'en'
+                ? '✏️ Trace over the dotted lines'
+                : '✏️ చుక్కల గీతలపై గీయండి'}
+            </p>
+          )}
         </div>
 
         <DrawCanvas
-          onComplete={(dataUrl) => {
+          onComplete={() => {
             // Simple validation - if drawing has content, pass
             handleSubmit(true);
           }}
-          traceImage={challenge.mechanic === 'draw_trace' ? undefined : undefined}
+          traceImage={traceTemplate}
         />
       </div>
     );
