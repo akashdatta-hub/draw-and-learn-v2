@@ -1,0 +1,167 @@
+[
+  {
+    "id": "understand_draw_trace",
+    "stage": "understand",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["drawing", "listening"],
+    "mechanic": "draw_trace",
+    "difficulty_band": "very_easy",
+    "scoring": { "xp": 5, "stars": 1 },
+    "tts_required": true,
+    "prompt": "Trace over the dotted lines to draw the word"
+  },
+  {
+    "id": "understand_listen_choose",
+    "stage": "understand",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["listening", "reading"],
+    "mechanic": "listen_choose",
+    "difficulty_band": "very_easy",
+    "scoring": { "xp": 5, "stars": 1 },
+    "tts_required": true,
+    "prompt": "Listen and choose the correct picture"
+  },
+  {
+    "id": "understand_mcq_3",
+    "stage": "understand",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["reading"],
+    "mechanic": "mcq_3",
+    "difficulty_band": "very_easy",
+    "scoring": { "xp": 5, "stars": 1 },
+    "prompt": "What does this word mean in Telugu?"
+  },
+  {
+    "id": "try_telugu_to_english_mcq3",
+    "stage": "try",
+    "framework": { "bloom": "apply", "nation": "language_focus" },
+    "modality": ["reading", "listening"],
+    "mechanic": "mcq_3",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 10, "stars": 1 },
+    "prompt": "Choose the English word for this Telugu meaning"
+  },
+  {
+    "id": "try_fill_blank",
+    "stage": "try",
+    "framework": { "bloom": "apply", "nation": "language_focus" },
+    "modality": ["reading", "writing"],
+    "mechanic": "fill_blank",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 10, "stars": 1 },
+    "prompt": "Fill in the blank with the correct word"
+  },
+  {
+    "id": "try_match_pairs",
+    "stage": "try",
+    "framework": { "bloom": "apply", "nation": "language_focus" },
+    "modality": ["reading"],
+    "mechanic": "match_pairs",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 10, "stars": 1 },
+    "prompt": "Match the English words with their Telugu meanings"
+  },
+  {
+    "id": "try_draw_free",
+    "stage": "try",
+    "framework": { "bloom": "apply", "nation": "output" },
+    "modality": ["drawing"],
+    "mechanic": "draw_free",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 15, "stars": 1 },
+    "tts_required": true,
+    "prompt": "Draw what this word means to you"
+  },
+  {
+    "id": "review_mcq_4",
+    "stage": "review",
+    "framework": { "bloom": "understand", "nation": "language_focus" },
+    "modality": ["reading", "listening"],
+    "mechanic": "mcq_4",
+    "difficulty_band": "medium",
+    "scoring": { "xp": 8, "stars": 1 },
+    "prompt": "Do you remember this word? Choose the right meaning"
+  },
+  {
+    "id": "review_sentence_build",
+    "stage": "review",
+    "framework": { "bloom": "understand", "nation": "output" },
+    "modality": ["reading", "writing"],
+    "mechanic": "sentence_build",
+    "difficulty_band": "medium",
+    "scoring": { "xp": 12, "stars": 1 },
+    "prompt": "Build a sentence using this word"
+  },
+  {
+    "id": "review_english_to_telugu",
+    "stage": "review",
+    "framework": { "bloom": "remember", "nation": "language_focus" },
+    "modality": ["reading"],
+    "mechanic": "english_to_telugu",
+    "difficulty_band": "medium",
+    "scoring": { "xp": 8, "stars": 1 },
+    "prompt": "What is this English word in Telugu?"
+  },
+  {
+    "id": "retry_listen_choose",
+    "stage": "retry",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["listening", "reading"],
+    "mechanic": "listen_choose",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 7, "stars": 1 },
+    "tts_required": true,
+    "prompt": "Let's try this again! Listen and choose"
+  },
+  {
+    "id": "retry_mcq_3",
+    "stage": "retry",
+    "framework": { "bloom": "remember", "nation": "language_focus" },
+    "modality": ["reading"],
+    "mechanic": "mcq_3",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 7, "stars": 1 },
+    "prompt": "You can do this! What does this word mean?"
+  },
+  {
+    "id": "retry_draw_trace",
+    "stage": "retry",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["drawing", "listening"],
+    "mechanic": "draw_trace",
+    "difficulty_band": "easy",
+    "scoring": { "xp": 7, "stars": 1 },
+    "tts_required": true,
+    "prompt": "Let's practice drawing this word again"
+  },
+  {
+    "id": "challenge_draw_caption",
+    "stage": "challenge",
+    "framework": { "bloom": "create" },
+    "modality": ["drawing", "writing"],
+    "mechanic": "draw_plus_caption",
+    "difficulty_band": "hard",
+    "scoring": { "xp": 20, "stars": 2, "badge": "Creator" },
+    "prompt": "Draw a picture and write a sentence about this word"
+  },
+  {
+    "id": "challenge_sentence_build_advanced",
+    "stage": "challenge",
+    "framework": { "bloom": "create" },
+    "modality": ["writing"],
+    "mechanic": "sentence_build",
+    "difficulty_band": "hard",
+    "scoring": { "xp": 18, "stars": 2, "badge": "Writer" },
+    "prompt": "Create an interesting sentence using this word and two other words"
+  },
+  {
+    "id": "challenge_draw_free_advanced",
+    "stage": "challenge",
+    "framework": { "bloom": "create" },
+    "modality": ["drawing"],
+    "mechanic": "draw_free",
+    "difficulty_band": "hard",
+    "scoring": { "xp": 20, "stars": 2, "badge": "Artist" },
+    "prompt": "Draw a creative picture that shows what this word means in your life"
+  }
+]
