@@ -11,6 +11,7 @@ import { db } from '../lib/supabaseClient';
 import words from '../data/words.json';
 import challengeBank from '../data/challenge_bank.json';
 import type { Word, Challenge, ChallengeLog } from '../types';
+import { t, getRandomEncouragement } from '../lib/translations';
 
 export function ChallengePage() {
   const navigate = useNavigate();
@@ -184,24 +185,20 @@ export function ChallengePage() {
                 <>
                   <CheckCircle className="mx-auto text-green-500 mb-4" size={64} />
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    {language === 'en' ? 'Great job!' : 'చాలా బాగుంది!'}
+                    {getRandomEncouragement(language)}
                   </h2>
                   <p className="text-xl text-gray-600">
-                    {language === 'en'
-                      ? `+${currentChallenge.scoring.xp} XP`
-                      : `+${currentChallenge.scoring.xp} XP`}
+                    {t('youEarned', language)} +{currentChallenge.scoring.xp} XP
                   </p>
                 </>
               ) : (
                 <>
                   <XCircle className="mx-auto text-orange-500 mb-4" size={64} />
                   <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    {language === 'en' ? "Let's try again!" : 'మళ్ళీ ప్రయత్నిద్దాం!'}
+                    {t('encouragement.keepPracticing', language)}
                   </h2>
                   <p className="text-xl text-gray-600">
-                    {language === 'en'
-                      ? 'You can do it!'
-                      : 'మీరు చేయగలరు!'}
+                    {t('encouragement.almostThere', language)}
                   </p>
                 </>
               )}

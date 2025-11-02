@@ -5,6 +5,7 @@ import { BookOpen, Trophy, Image, BarChart3, Sparkles } from 'lucide-react';
 import { useApp } from '../lib/context';
 import words from '../data/words.json';
 import { db } from '../lib/supabaseClient';
+import { t, getGreeting } from '../lib/translations';
 
 export function Home() {
   const { language, totalXP, badges, userId } = useApp();
@@ -30,29 +31,29 @@ export function Home() {
   const features = [
     {
       icon: BookOpen,
-      title: language === 'en' ? 'Start Learning' : 'నేర్చుకోవడం ప్రారంభించండి',
-      subtitle: language === 'en' ? 'Practice vocabulary' : 'పదజాలం అభ్యసించండి',
+      title: t('startLearning', language),
+      subtitle: language === 'en' ? 'Practice vocabulary' : 'పదాలు ప్రాక్టీస్ చేయి',
       link: '/challenge',
       color: 'bg-blue-500',
     },
     {
       icon: Image,
-      title: language === 'en' ? 'Gallery' : 'గ్యాలరీ',
-      subtitle: language === 'en' ? 'See peer creations' : 'తోటివారి సృష్టులను చూడండి',
+      title: t('gallery', language),
+      subtitle: language === 'en' ? 'See your drawings' : 'నీ డ్రాయింగ్స్ చూడు',
       link: '/gallery',
       color: 'bg-purple-500',
     },
     {
       icon: Sparkles,
-      title: language === 'en' ? 'Reflection' : 'ప్రతిబింబం',
-      subtitle: language === 'en' ? 'Weekly review' : 'వారపు సమీక్ష',
+      title: t('reflection', language),
+      subtitle: language === 'en' ? 'Weekly review' : 'వీక్లీ రివ్యూ',
       link: '/reflection',
       color: 'bg-green-500',
     },
     {
       icon: BarChart3,
-      title: language === 'en' ? 'Dashboard' : 'డాష్‌బోర్డ్',
-      subtitle: language === 'en' ? 'View analytics' : 'విశ్లేషణలు చూడండి',
+      title: t('dashboard', language),
+      subtitle: language === 'en' ? 'View analytics' : 'స్టాట్స్ చూడు',
       link: '/dashboard',
       color: 'bg-orange-500',
     },
@@ -67,13 +68,12 @@ export function Home() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
+          <div className="text-xl text-primary-600 mb-3">{getGreeting(language)}</div>
           <h1 className="text-5xl font-bold text-gray-800 mb-2">
-            {language === 'en' ? 'Draw & Learn' : 'గీయండి & నేర్చుకోండి'}
+            {t('welcomeTitle', language)}
           </h1>
           <p className="text-xl text-gray-600">
-            {language === 'en'
-              ? 'Build confidence through creative learning'
-              : 'సృజనాత్మక అభ్యాసం ద్వారా ఆత్మవిశ్వాసం పెంచుకోండి'}
+            {t('welcomeSubtitle', language)}
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export function Home() {
           >
             <div className="text-3xl font-bold">{totalXP}</div>
             <div className="text-sm opacity-90">
-              {language === 'en' ? 'Total XP' : 'మొత్తం XP'}
+              {t('totalXP', language)}
             </div>
           </motion.div>
 
@@ -99,7 +99,7 @@ export function Home() {
           >
             <div className="text-3xl font-bold">{stats.wordsLearned}</div>
             <div className="text-sm opacity-90">
-              {language === 'en' ? 'Words Learned' : 'నేర్చుకున్న పదాలు'}
+              {t('wordsLearned', language)}
             </div>
           </motion.div>
 
@@ -111,7 +111,7 @@ export function Home() {
           >
             <div className="text-3xl font-bold">{stats.challengesCompleted}</div>
             <div className="text-sm opacity-90">
-              {language === 'en' ? 'Challenges' : 'సవాళ్లు'}
+              {t('challengesCompleted', language)}
             </div>
           </motion.div>
 

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { useApp } from '../lib/context';
 import { getTraceTemplate } from '../lib/traceTemplates';
 import { generateMCQOptions, isCorrectMCQAnswer } from '../lib/mcqHelpers';
+import { t } from '../lib/translations';
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -46,9 +47,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
             {challenge.id.includes("telugu_to_english") ? word.telugu : word.english}
           </h2>
           <p className="text-gray-600">
-            {language === 'en'
-              ? challenge.prompt
-              : challenge.prompt?.replace('Choose', 'ఎంచుకోండి')}
+            {t('chooseCorrectAnswer', language)}
           </p>
         </div>
 
@@ -89,13 +88,11 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
           <h2 className="text-2xl font-bold text-gray-800 mb-2">{word.english}</h2>
           <p className="text-lg text-gray-600">{word.telugu}</p>
           <p className="text-sm text-gray-500 mt-2">
-            {language === 'en' ? challenge.prompt : 'ఈ పదాన్ని గీయండి'}
+            {t('drawWord', language)}
           </p>
           {challenge.mechanic === 'draw_trace' && (
             <p className="text-xs text-primary-600 mt-1 font-medium">
-              {language === 'en'
-                ? '✏️ Trace over the dotted lines'
-                : '✏️ చుక్కల గీతలపై గీయండి'}
+              {t('traceOverLines', language)}
             </p>
           )}
         </div>
@@ -120,9 +117,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
       <div className="space-y-4">
         <div className="text-center mb-6">
           <p className="text-lg text-gray-700">
-            {language === 'en'
-              ? 'Fill in the blank:'
-              : 'ఖాళీని పూరించండి:'}
+            {t('fillBlank', language)}
           </p>
           <p className="text-xl font-medium text-gray-800 mt-4">
             {sentence.replace(word.english, '______')}
@@ -134,7 +129,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
           value={answer}
           onChange={(e) => setAnswer(e.target.value)}
           className="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-primary-500 focus:outline-none text-lg"
-          placeholder={language === 'en' ? 'Type your answer...' : 'మీ సమాధానం టైప్ చేయండి...'}
+          placeholder={t('typeAnswer', language)}
         />
 
         <button
@@ -145,7 +140,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
           className="btn-primary w-full"
           disabled={!answer.trim()}
         >
-          {language === 'en' ? 'Submit' : 'సమర్పించండి'}
+          {t('submit', language)}
         </button>
       </div>
     );
