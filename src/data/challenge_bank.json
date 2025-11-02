@@ -32,6 +32,26 @@
     "prompt": "What does this word mean in Telugu?"
   },
   {
+    "id": "understand_match_pairs",
+    "stage": "understand",
+    "framework": { "bloom": "remember", "nation": "input" },
+    "modality": ["reading"],
+    "mechanic": "match_pairs",
+    "difficulty_band": "very_easy",
+    "scoring": { "xp": 5, "stars": 1 },
+    "prompt": "Match the English words with their Telugu meanings"
+  },
+  {
+    "id": "understand_english_to_telugu",
+    "stage": "understand",
+    "framework": { "bloom": "remember", "nation": "language_focus" },
+    "modality": ["reading"],
+    "mechanic": "english_to_telugu",
+    "difficulty_band": "very_easy",
+    "scoring": { "xp": 5, "stars": 1 },
+    "prompt": "What is this word in Telugu?"
+  },
+  {
     "id": "try_telugu_to_english_mcq3",
     "stage": "try",
     "framework": { "bloom": "apply", "nation": "language_focus" },
