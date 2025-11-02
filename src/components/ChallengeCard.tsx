@@ -29,9 +29,9 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
   const renderMCQ = () => {
     // Mock options - in real implementation, these would be generated
     const options =
-      challenge.mechanic === 'english_to_telugu'
+      challenge.id.includes("english_to_telugu")
         ? [word.telugu, 'తప్పు సమాధానం 1', 'తప్పు సమాధానం 2']
-        : challenge.mechanic === 'telugu_to_english_mcq3'
+        : challenge.id.includes("telugu_to_english")
         ? [word.english, 'wrong answer 1', 'wrong answer 2']
         : [word.english, 'option 2', 'option 3'];
 
@@ -41,7 +41,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
       <div className="space-y-4">
         <div className="text-center mb-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-2">
-            {challenge.mechanic === 'telugu_to_english_mcq3' ? word.telugu : word.english}
+            {challenge.id.includes("telugu_to_english") ? word.telugu : word.english}
           </h2>
           <p className="text-gray-600">
             {language === 'en'
@@ -57,7 +57,7 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
               onClick={() => {
                 setSelectedAnswer(option);
                 const isCorrect =
-                  challenge.mechanic === 'english_to_telugu'
+                  challenge.id.includes("english_to_telugu")
                     ? option === word.telugu
                     : option === word.english;
                 setTimeout(() => handleSubmit(isCorrect), 500);
