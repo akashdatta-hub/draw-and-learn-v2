@@ -5,6 +5,7 @@ import { AIHelper } from './AIHelper';
 import { motion } from 'framer-motion';
 import { useApp } from '../lib/context';
 import { getTraceTemplate } from '../lib/traceTemplates';
+import { generateMCQOptions, isCorrectMCQAnswer } from '../lib/mcqHelpers';
 
 interface ChallengeCardProps {
   challenge: Challenge;
@@ -28,15 +29,15 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
   };
 
   const renderMCQ = () => {
-    // Mock options - in real implementation, these would be generated
-    const options =
-      challenge.id.includes("english_to_telugu")
-        ? [word.telugu, 'తప్పు సమాధానం 1', 'తప్పు సమాధానం 2']
-        : challenge.id.includes("telugu_to_english")
-        ? [word.english, 'wrong answer 1', 'wrong answer 2']
-        : [word.english, 'option 2', 'option 3'];
+    // Determine challenge type for MCQ generation
+    const challengeType = challenge.id.includes("english_to_telugu")
+      ? 'english_to_telugu'
+      : challenge.id.includes("telugu_to_english")
+      ? 'telugu_to_english'
+      : 'other';
 
-    const shuffled = [...options].sort(() => Math.random() - 0.5);
+    // Generate intelligent MCQ options with proper distractors
+    const options = generateMCQOptions(word, challengeType);
 
     return (
       <div className="space-y-4">
@@ -52,15 +53,12 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
         </div>
 
         <div className="space-y-3">
-          {shuffled.map((option, idx) => (
+          {options.map((option, idx) => (
             <button
               key={idx}
               onClick={() => {
                 setSelectedAnswer(option);
-                const isCorrect =
-                  challenge.id.includes("english_to_telugu")
-                    ? option === word.telugu
-                    : option === word.english;
+                const isCorrect = isCorrectMCQAnswer(option, word, challengeType);
                 setTimeout(() => handleSubmit(isCorrect), 500);
               }}
               className={`w-full p-4 rounded-lg border-2 transition-all ${
