@@ -52,6 +52,15 @@ export function ChallengePage() {
 
     const nextChallenge = selectNextChallenge(randomWord.id, performance);
 
+    // Debug logging
+    console.log('🎯 Challenge Selection Debug:', {
+      word: randomWord.english,
+      stage: performance.lastStage || 'first-time (understand)',
+      selectedChallenge: nextChallenge?.id,
+      mechanic: nextChallenge?.mechanic,
+      difficulty: nextChallenge?.difficulty_band
+    });
+
     if (nextChallenge) {
       setCurrentWord(randomWord);
       setCurrentChallenge(nextChallenge as Challenge);

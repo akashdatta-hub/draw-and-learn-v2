@@ -355,6 +355,14 @@ export function ChallengeCard({ challenge, word, onComplete }: ChallengeCardProp
   const renderChallenge = () => {
     const mechanic = challenge.mechanic;
 
+    // Debug logging
+    console.log('🎨 Rendering Challenge:', {
+      challengeId: challenge.id,
+      mechanic: mechanic,
+      stage: challenge.stage,
+      word: word.english
+    });
+
     if (mechanic.includes('draw')) {
       return renderDrawing();
     } else if (mechanic.includes('mcq') || mechanic.includes('listen_choose')) {
